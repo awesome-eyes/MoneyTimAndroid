@@ -5,7 +5,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 //import org.apache.commons.lang.builder.ToStringBuilder;
 
-public class JsonList {
+public class JsonList<Model> {
 
     @SerializedName("count")
     @Expose
@@ -18,28 +18,13 @@ public class JsonList {
     private Object previous;
     @SerializedName("results")
     @Expose
-    private List<UserModel> results = null;
+    private List<Model> results = null;
 
     /**
      * No args constructor for use in serialization
      *
      */
     public JsonList() {
-    }
-
-    /**
-     *
-     * @param results
-     * @param previous
-     * @param count
-     * @param next
-     */
-    public JsonList(Integer count, Object next, Object previous, List<UserModel> results) {
-        super();
-        this.count = count;
-        this.next = next;
-        this.previous = previous;
-        this.results = results;
     }
 
     public Integer getCount() {
@@ -66,11 +51,11 @@ public class JsonList {
         this.previous = previous;
     }
 
-    public List<UserModel> getUsers() {
+    public List<Model> getResults() {
         return results;
     }
 
-    public void setUsers(List<UserModel> results) {
+    public void setUsers(List<Model> results) {
         this.results = results;
     }
 

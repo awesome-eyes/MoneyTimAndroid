@@ -7,25 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnGetUsers"
-        android:layout_width="197dp"
-        android:layout_height="68dp"
-        android:background="#f154"
-        android:text="B"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.993" />
+    <LinearLayout
+        android:layout_width="344dp"
+        android:layout_height="485dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="6dp">
 
-    <TextView
-        android:id="@+id/tvUserList"
-        android:layout_width="234dp"
-        android:layout_height="212dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="46dp" />
+        <TextView
+            android:id="@+id/tvUserList"
+            android:layout_width="match_parent"
+            android:layout_height="364dp"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="126dp"
+            tools:layout_editor_absoluteY="207dp" />
+
+        <Button
+            android:id="@+id/btnGetExpenses"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="get expenses"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="407dp" />
+
+        <Button
+            android:id="@+id/btnGetUsers"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="get users"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="447dp" />
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
