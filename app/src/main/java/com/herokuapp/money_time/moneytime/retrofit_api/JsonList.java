@@ -20,10 +20,6 @@ public class JsonList<Model> {
     @Expose
     private List<Model> results = null;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
     public JsonList() {
     }
 
@@ -55,13 +51,8 @@ public class JsonList<Model> {
         return results;
     }
 
-    public void setUsers(List<Model> results) {
+    public void setResults(List<Model> results) {
         this.results = results;
     }
-
-//    @Override
-//    public String toString() {
-//        return new ToStringBuilder(this).append("count", count).append("next", next).append("previous", previous).append("results", results).toString();
-//    }
 
 }

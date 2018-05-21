@@ -1,6 +1,7 @@
 package com.herokuapp.money_time.moneytime;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.herokuapp.money_time.moneytime.retrofit_api.App;
 import com.herokuapp.money_time.moneytime.retrofit_api.JsonList;
 import com.herokuapp.money_time.moneytime.retrofit_api.models.UserModel;
+import com.herokuapp.money_time.moneytime.utils.Constants;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         txUserList = (TextView)findViewById(R.id.tvUserList);
         txUserList.setOnClickListener(this);
+//        SharedPreferences.Editor editor = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE).edit();
+//        editor.remove(Constants.SAVED_AUTH_TOKEN);
+//        editor.apply();
 
         if(App.getAuthToken().equals("")){
             Intent k = new Intent(getApplicationContext(), LoginActivity.class);
@@ -72,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnGetExpenses:
                 Intent k = new Intent(getApplicationContext(), ExpenseListActivity.class);
+//                Intent k = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(k);
                 break;
             default:

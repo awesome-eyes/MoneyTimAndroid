@@ -8,17 +8,17 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="344dp"
-        android:layout_height="485dp"
+        android:layout_width="409dp"
+        android:layout_height="602dp"
+        android:layout_marginStart="8dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="6dp">
 
         <TextView
             android:id="@+id/tvUserList"
             android:layout_width="match_parent"
-            android:layout_height="364dp"
-            android:text="TextView"
+            android:layout_height="86dp"
             tools:layout_editor_absoluteX="126dp"
             tools:layout_editor_absoluteY="207dp" />
 
@@ -27,7 +27,19 @@
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="get expenses"
+            android:background="@color/colorPrimary"
+            android:text="Expenses"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="407dp" />
+
+        <Button
+            android:id="@+id/btnGetExpenses2"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorActivatedHighlight"
+            android:text="Categories of expenses"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="407dp" />
@@ -37,7 +49,26 @@
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="get users"
+            android:background="?android:attr/textColorLinkInverse"
+            android:text="Locations"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="447dp" />
+
+        <TextView
+            android:id="@+id/tvUserList2"
+            android:layout_width="match_parent"
+            android:layout_height="177dp"
+            tools:layout_editor_absoluteX="126dp"
+            tools:layout_editor_absoluteY="207dp" />
+
+        <Button
+            android:id="@+id/btnGetUsers2"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_dark"
+            android:text="Settings"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="447dp" />

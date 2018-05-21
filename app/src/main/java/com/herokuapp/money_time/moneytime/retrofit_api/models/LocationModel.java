@@ -74,8 +74,8 @@ public class LocationModel {
 
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder("ID: " + this.id + "\nName: " +
-                this.name + "\nCategory: " + this.category + "\nLocation: " + this.location + "\n");
+        StringBuilder str = new StringBuilder(
+                this.name + "(" + this.category.getName() + ")" + "\n");
         return str.toString();
     }
 

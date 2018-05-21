@@ -5,6 +5,10 @@ import android.location.Location;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ExpenseModel {
 
     @SerializedName("id")
@@ -15,7 +19,7 @@ public class ExpenseModel {
     private ExpenseCategoryModel category;
     @SerializedName("location")
     @Expose
-    private Location location;
+    private LocationModel location;
     @SerializedName("amount")
     @Expose
     private String amount;
@@ -26,23 +30,10 @@ public class ExpenseModel {
     @Expose
     private Object creationLocation;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
     public ExpenseModel() {
     }
 
-    /**
-     *
-     * @param amount
-     * @param id
-     * @param category
-     * @param creationLocation
-     * @param created
-     * @param location
-     */
-    public ExpenseModel(Integer id, ExpenseCategoryModel category, Location location, String amount, String created, Object creationLocation) {
+    public ExpenseModel(Integer id, ExpenseCategoryModel category, LocationModel location, String amount, String created, Object creationLocation) {
         super();
         this.id = id;
         this.category = category;
@@ -68,11 +59,11 @@ public class ExpenseModel {
         this.category = category;
     }
 
-    public Location getLocation() {
+    public LocationModel getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(LocationModel location) {
         this.location = location;
     }
 
@@ -80,12 +71,25 @@ public class ExpenseModel {
         return amount;
     }
 
+    public String getFixedAmount() {
+        return String.format("%.2f", new Float(amount));
+    }
+
     public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public String getCreated() {
-        return created;
+    public String getCreated() throws ParseException {
+        String toChange = created.replace('T', ' ').replace('Z', ' ');
+//        Date d = new Date(created);
+        Date d = new SimpleDateFormat("yyyy-mm-dd HH:MM:SS").parse(toChange);
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:MM dd/mm");
+        return  formatter.format(d);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+//        return outputFormat.format(sdf.parse(created));
+//        return sdf.toPattern("HH:mm dd.mm");
+//        String formattedString = String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", sdf));
+//        return created;
     }
 
     public void setCreated(String created) {
@@ -105,10 +109,5 @@ public class ExpenseModel {
         StringBuilder str = new StringBuilder("ID: " + this.id + "\nAmount: " +
                 this.amount + "\nCreated: " + this.created + "\nCategory: " + this.category + "\n");
         return str.toString();
-//        return new ToStringBuilder(this).append("id", id).append("amount", amount)
-// .append("created", created).append("creationLocation", creationLocation)
-// .append("user", user).append("category", category).append("location", location)
-// .toString();
     }
-
 }

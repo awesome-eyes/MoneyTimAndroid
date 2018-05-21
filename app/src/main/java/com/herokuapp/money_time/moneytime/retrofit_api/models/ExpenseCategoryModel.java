@@ -48,8 +48,9 @@ public class ExpenseCategoryModel {
 
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder("ID: " + this.id + "\nName: " +
-                this.name + "\n");
+        StringBuilder str = new StringBuilder(                this.name + "\n");
+//        StringBuilder str = new StringBuilder("ID: " + this.id + "\nName: " +
+//                this.name + "\n");
         return str.toString();
     }
 }

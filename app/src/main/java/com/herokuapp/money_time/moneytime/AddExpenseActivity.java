@@ -1,12 +1,17 @@
 package com.herokuapp.money_time.moneytime;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +19,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -35,17 +41,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddExpenseActivity extends AppCompatActivity
-        implements  AdapterView.OnItemSelectedListener ,
+public class AddExpenseActivity extends FragmentActivity
+implements  AdapterView.OnItemSelectedListener,
                     OnMapReadyCallback,
                     GoogleApiClient.OnConnectionFailedListener,
-                    GoogleApiClient.ConnectionCallbacks{
+                    GoogleApiClient.ConnectionCallbacks
+{
 
     Toast toast;
     Spinner spinnerExpenseCategory;
     Spinner spinnerLocation;
     ArrayAdapter<ExpenseCategoryModel> mExpenseCategoryAdapter;
     ArrayAdapter<LocationModel> mLocationAdapter;
+//    ArrayAdapter<String> mExpenseCategoryAdapter;
+//    ArrayAdapter<String> mLocationAdapter;
+    TextView textView2;
 
     private GoogleMap mMap;
 //    MapView mapView;
@@ -57,10 +67,25 @@ public class AddExpenseActivity extends AppCompatActivity
     Location mCurrentLocation;
     LatLng mDefaultLocation = new LatLng(53.551, 9.993);
 
+//    private void setUpMap() {
+//        ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMapAsync(this);
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expense);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        MapsActivity fragment = new MapsActivity();
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+        fragmentTransaction.add(R.id.add_expemse_form, fragment);
+        fragmentTransaction.commit();
+
+//        setUpMap();
+
 
         spinnerExpenseCategory = (Spinner)findViewById(R.id.spinnerExpenseCategory);
         spinnerExpenseCategory.setOnItemSelectedListener(this);
@@ -80,8 +105,12 @@ public class AddExpenseActivity extends AppCompatActivity
                 android.R.layout.simple_list_item_1
         );
         spinnerLocation.setAdapter(mLocationAdapter);
+//        mExpenseCategoryAdapter.add("Category");
+//        mLocationAdapter.add("Location");
         this.getExpenseCategories();
         this.getLocations();
+
+//        textView2 = (TextView) findViewById(R.id.textView2);
 
 //        if (savedInstanceState != null) {
 //            mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
@@ -185,15 +214,15 @@ public class AddExpenseActivity extends AppCompatActivity
             return;
         }
         try {
-//            if (mLocationPermissionGranted) {
+            if (mLocationPermissionGranted) {
                 mMap.setMyLocationEnabled(true);
                 mMap.getUiSettings().setMyLocationButtonEnabled(true);
-//            } else {
-//                mMap.setMyLocationEnabled(false);
-//                mMap.getUiSettings().setMyLocationButtonEnabled(false);
-//                mLastKnownLocation = null;
+            } else {
+                mMap.setMyLocationEnabled(false);
+                mMap.getUiSettings().setMyLocationButtonEnabled(false);
+                mLastKnownLocation = null;
 //                getLocationPermission();
-//            }
+            }
         } catch (SecurityException e)  {
             Log.e("Exception: %s", e.getMessage());
         }
@@ -238,6 +267,7 @@ public class AddExpenseActivity extends AppCompatActivity
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
         Toast toast = Toast.makeText(getApplicationContext(), "onConnectionFailed", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     @Override
@@ -249,7 +279,8 @@ public class AddExpenseActivity extends AppCompatActivity
 
     @Override
     public void onConnectionSuspended(int i) {
-
+        Toast toast = Toast.makeText(getApplicationContext(), "onConnectionSuspended", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     @Override

@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=8B:03:9B:2E:3A:47:6F:64:54:92:91:A2:6A:97:43:2A:7E:10:AA:C8%3Bcom.herokuapp.money_time.moneytime
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    8B:03:9B:2E:3A:47:6F:64:54:92:91:A2:6A:97:43:2A:7E:10:AA:C8
+
+    SHA-1 certificate fingerprint:
+    8B:03:9B:2E:3A:47:6F:64:54:92:91:A2:6A:97:43:2A:7E:10:AA:C8
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBO3s7NdAOxvV4RMuaeSHQ80OMT1KDsOmo</string>
+</resources>
