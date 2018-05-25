@@ -4,17 +4,21 @@
 
     <TextView
         android:id="@+id/category"
+        android:fontFamily="@font/amatic_sc_bold"
         android:text="" />
 
     <TextView
         android:id="@+id/amount"
+        android:fontFamily="@font/amatic_sc_bold"
         android:text="" />
 
     <TextView
         android:id="@+id/date"
+        android:fontFamily="@font/amatic_sc_bold"
         android:text="" />
 
     <TextView
         android:id="@+id/location"
+        android:fontFamily="@font/amatic_sc_bold"
         android:text="" />
 </TableRow>

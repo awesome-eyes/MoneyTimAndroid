@@ -81,11 +81,10 @@ implements  AdapterView.OnItemSelectedListener,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        fragmentTransaction.add(R.id.add_expemse_form, fragment);
+        fragmentTransaction.add(R.id.add_expense_form, fragment);
         fragmentTransaction.commit();
 
 //        setUpMap();
-
 
         spinnerExpenseCategory = (Spinner)findViewById(R.id.spinnerExpenseCategory);
         spinnerExpenseCategory.setOnItemSelectedListener(this);
